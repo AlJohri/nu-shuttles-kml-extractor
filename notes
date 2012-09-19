@@ -1,0 +1,36 @@
+Shop-N-Ride
+
+1. remove div tags
+2. remove &nbsp;
+3. if <br> exists, break at br for northbound/southbound
+
+
+Intercampus Shuttle
+
+1. 	<span style="font-weight:bold"> Evanston to Chicago </span> 
+					OR 
+	<strong> Evanston to Chicago </strong>
+
+Most have "This is not a stop on the Chicago to Evanston route."
+
+
+<strong style="font-weight:normal">Arrival times:</strong>
+
+All stops are only one direction
+
+
+Chicago Express
+
+one stop is in both directions
+
+Campus Loop
+
+uses patterns instead of times
+
+
+
+
+Frostbite
+
+Both use "AM" and "PM" not "a" and "p"
+
