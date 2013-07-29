@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 
 =begin
@@ -58,10 +58,11 @@ gsub(/<\/?[^>]*>/, "")
 
 require 'net/http'
 require 'rexml/document'
+require 'mechanize'
 
 $output
 
-urlBase = 'http://maps.google.com/maps/ms?msa=0&msid='
+urlBase = 'https://maps.google.com/maps/ms?msa=0&msid='
 uuidLee = '209440134627172181780' # Lee
 uuidJess = '200725481515120343586' # Jessica
 format = '&output=kml'
@@ -79,12 +80,13 @@ routes = 	[['209440134627172181780', '00046246a50cf04a21430'],  # Lee , Shop-N-R
 			 ['209440134627172181780', '00046246de55f4f73f24f'],  # Lee , Frostbite Express
 			 ['200725481515120343586', '0004b645f2cbd1b31ad1f']]  # Jes , Frostbite Sheridan
 
-
+agent = Mechanize.new
 
 for rt in routes
 
-	url = urlBase + rt[0] + "." + rt[1] + format
-	xml_data = Net::HTTP.get_response(URI.parse(url)).body
+  url = urlBase + rt[0] + "." + rt[1] + format
+	#xml_data = Net::HTTP.get_response(URI.parse(url)).body
+  xml_data = agent.get(url).body
 	doc = REXML::Document.new(xml_data)
 	root = doc.root
 	name = root.elements[1].elements['name'].text
